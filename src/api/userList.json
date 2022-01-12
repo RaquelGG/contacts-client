@@ -1,0 +1,33 @@
+{
+    "userlist": [{
+            "id": 0,
+            "name": "Ana",
+            "surname": "Aguilera",
+            "email": "aaguilera@mail.com",
+            "phone_number": "012345678"
+        }, {
+            "id": 1,
+            "name": "Raquel",
+            "surname": "Gutiérrez",
+            "email": "rgutierrez@mail.com",
+            "phone_number": "112345678"
+        }, {
+            "id": 2,
+            "name": "Lucia",
+            "surname": "Espinosa",
+            "email": "lespinosa@mail.com",
+            "phone_number": "212345678"
+        }, {
+            "id": 3,
+            "name": "Jose",
+            "surname": "Guerrero",
+            "email": "jguerrero@mail.com",
+            "phone_number": "312345678"
+        }, {
+            "id": 4,
+            "name": "Pepe",
+            "surname": "Martín",
+            "email": "pmartin@mail.com",
+            "phone_number": "412345678"
+        }]
+}
