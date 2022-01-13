@@ -5,32 +5,32 @@ import { Link } from "react-router-dom";
 import PopError from '../PopError'
 import LoadingList from './LoadingList'
 import UserIcon from './UserIcon'
-import addUserIcon from '../../img/person_add_alt_black_24dp.svg';
+import AddUserButton from './AddUserButton'
 
-function UserList({userList, processing}) {
+function UserList({ userList, processing }) {
   return (
     <Wrapper>
       {userList ? (
         <List>
           {userList.map((user) => (
-            <ListItem 
-              key={user.id} 
-              to={`/user/${user.id}`}  
+            <ListItem
+              key={user.id}
+              to={`/user/${user.id}`}
             >
               <UserIcon user={user} />
               <Name>{user.name} {user.surname}</Name>
             </ListItem>
-                                  
+
           ))}
         </List>
       ) : (
         processing ? (
-          <LoadingList/>
+          <LoadingList />
         ) : (
           <PopError errorMessage="Failed to load" />
         )
       )}
-      <AddUser/>
+      <AddUserButton />
     </Wrapper>
   );
 }
@@ -62,28 +62,6 @@ const Name = styled.h2`
   font-weight: 400;
 `
 
-const AddUser = styled.button`
-  position: absolute;
-  right: 32px;
-  bottom: 32px;
-  width: 70px;
-  height: 70px;
-  background-color: #dae6ff;
-  border-radius: 50%;
-  background-image: url(${addUserIcon});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 30px;
-  border: 2px solid #3567d3;
-  box-shadow: 0px 3px 9px #00000059;
 
-  &:active {
-    box-shadow: 0px 0px 0px;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-`
 
 export default UserList;
