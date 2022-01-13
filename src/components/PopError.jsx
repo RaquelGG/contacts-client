@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 
 function PopError({errorMessage}) {
@@ -9,7 +9,7 @@ function PopError({errorMessage}) {
         </Wrapper>
     );
 }
-
+/* STYLED COMPONENTS */
 const Wrapper = styled.div`
     background-color: #ff4040;
     position: absolute;

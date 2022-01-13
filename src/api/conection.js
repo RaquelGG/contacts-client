@@ -6,7 +6,7 @@ export async function getUserList() {
         //const response = await fetch('');
         //const userList = await response.json();
         const data = jsonUserList.userlist;
-        return data;
+        return data ? data: null;
     } catch (err) {
         console.error("Error obtaining the user list: ", err);
         return null;
