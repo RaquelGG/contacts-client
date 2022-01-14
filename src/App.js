@@ -7,7 +7,8 @@ import {
 
 import UserList from './components/userList/UserList';
 import UserDetails from './components/userDetails/UserDetails'
-import {getUserList} from './api/conection'
+import ChangeLog from './components/userDetails/changeLog/ChangeLog'
+import {getUserList} from './api-client/conection'
   
 
 function App() {
@@ -27,10 +28,11 @@ function App() {
     return(
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<UserList userList={userList} processing={processing} />} />
-                <Route path="user/:userId" element={<UserDetails userList={userList} />} />
-                <Route path="user/new" element={<UserDetails isNewUser={true} />} />
-                <Route path="*" element={<UserList />} />
+                <Route path='/' element={<UserList userList={userList} processing={processing} />} />
+                <Route path='user/:userId' element={<UserDetails userList={userList} />} />
+                <Route path='user/new' element={<UserDetails isNewUser={true} />} />
+                <Route path='user/changelog/:userId' element={<ChangeLog /> } />
+                <Route path='*' element={<UserList userList={userList} processing={processing} /> } />
             </Routes>
         </BrowserRouter>
     );
