@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
 import PopError from '../PopError'
-import LoadingList from './LoadingList'
+import Loading from '../Loading'
 import UserIcon from './UserIcon'
 import AddUserButton from './AddUserButton'
 
@@ -20,12 +20,11 @@ function UserList({ userList, processing }) {
               <UserIcon user={user} />
               <Name>{user.name} {user.surname}</Name>
             </ListItem>
-
           ))}
         </List>
       ) : (
         processing ? (
-          <LoadingList />
+          <Loading />
         ) : (
           <PopError errorMessage="Failed to load" />
         )
@@ -36,13 +35,11 @@ function UserList({ userList, processing }) {
 }
 
 /* STYLED COMPONENTS */
-const Wrapper = styled.div`
-    
-`
+const Wrapper = styled.div``
 
 const List = styled.ol`
   padding: 0;
-`
+`;
 
 const ListItem = styled(Link)`
   display: flex;
@@ -54,14 +51,12 @@ const ListItem = styled(Link)`
     cursor: pointer;
     background-color: #00000014;
   }
-`
+`;
 
 const Name = styled.h2`
   margin-top: 4px;
   margin-left: 32px;
   font-weight: 400;
-`
-
-
+`;
 
 export default UserList;
