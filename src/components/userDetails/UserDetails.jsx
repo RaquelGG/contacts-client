@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useParams } from "react-router-dom";
 import { useInput } from './useInput'
 import ActionBar from './ActionBar'
-import { editUser, addUser } from '../../api/conection'
+import { editUser, addUser } from '../../api-client/conection'
 
 
 function UserDetails({ userList, isNewUser }) {
