@@ -1,41 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import {
-    BrowserRouter,
-    Routes,
-    Route
-  } from "react-router-dom";
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 
-import UserList from './components/userList/UserList';
-import UserDetails from './components/userDetails/UserDetails'
-import ChangeLog from './components/userDetails/changeLog/ChangeLog'
-import {getUserList} from './api-client/conection'
-  
+import ContactList from './components/contactList/ContactList';
+import ContactDetails from './components/contactDetails/ContactDetails'
+import ChangeLog from './components/contactDetails/changeLog/ChangeLog'
+import { getContacts } from './api-client/conection'
+import Spinner from './components/Spinner'
+
 
 function App() {
-    const [userList, setUserList] = useState(null);
-    const [processing, setProcessing] = useState(true);
+  const [contacts, setContacts] = useState(null);
+  const [processing, setProcessing] = useState(true);
 
-    useEffect(() => {
-        async function fetchUserList() {
-          setProcessing(true);
-          setUserList(await getUserList());
-          setProcessing(false);
-        }
-        fetchUserList();
-      }, []);
+  useEffect(() => {
+    async function fetchContacts() {
+      setContacts(await getContacts());
+      setProcessing(false);
+    }
+    fetchContacts();
+  }, []);
 
 
-    return(
-        <BrowserRouter>
-            <Routes>
-                <Route path='/' element={<UserList userList={userList} processing={processing} />} />
-                <Route path='user/:userId' element={<UserDetails userList={userList} />} />
-                <Route path='user/new' element={<UserDetails isNewUser={true} />} />
-                <Route path='user/changelog/:userId' element={<ChangeLog /> } />
-                <Route path='*' element={<UserList userList={userList} processing={processing} /> } />
-            </Routes>
-        </BrowserRouter>
-    );
+  return <BrowserRouter>
+    {processing ?
+      <Routes>
+        <Route path='contact/changelog/:contactId' element={<ChangeLog />} />
+        <Route path='*' element={<Spinner />} />
+      </Routes> : <Routes>
+        <Route path='/' element={<ContactList contacts={contacts} />} />
+        <Route path='contact/:contactId' element={<ContactDetails contacts={contacts} />} />
+        <Route path='contact/new' element={<ContactDetails isNewContact={true} />} />
+        <Route path='contact/changelog/:contactId' element={<ChangeLog />} />
+        <Route path='*' element={<ContactList contacts={contacts} />} />
+      </Routes>}
+  </BrowserRouter>;
 }
 
 

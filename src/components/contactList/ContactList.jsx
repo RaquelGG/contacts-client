@@ -3,33 +3,28 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
 import PopError from '../PopError'
-import Loading from '../Loading'
-import UserIcon from './UserIcon'
-import AddUserButton from './AddUserButton'
+import ContactIcon from './ContactIcon'
+import AddContactButton from './AddContactButton'
 
-function UserList({ userList, processing }) {
+function ContactList({ contacts }) {
   return (
     <Wrapper>
-      {userList ? (
+      {contacts ? (
         <List>
-          {userList.map((user) => (
+          {Object.entries(contacts).map(([id, contact]) =>
             <ListItem
-              key={user.id}
-              to={`/user/${user.id}`}
+              key={id}
+              to={`/contact/${id}`}
             >
-              <UserIcon user={user} />
-              <Name>{user.name} {user.surname}</Name>
+              <ContactIcon contact={contact} />
+              <Name>{contact.name} {contact.surname}</Name>
             </ListItem>
-          ))}
+          )}
         </List>
       ) : (
-        processing ? (
-          <Loading />
-        ) : (
           <PopError errorMessage="Failed to load" />
-        )
       )}
-      <AddUserButton />
+      <AddContactButton />
     </Wrapper>
   );
 }
@@ -59,4 +54,4 @@ const Name = styled.h2`
   font-weight: 400;
 `;
 
-export default UserList;
+export default ContactList;

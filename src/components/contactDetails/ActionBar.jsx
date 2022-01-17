@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
 
 import OverflowMenu from './OverflowMenu'
 import arrowBackIcon from '../../img/arrow_back_24dp.svg';
@@ -8,35 +9,37 @@ import overflorMenuIcon from '../../img/more_vert_24dp.svg';
 import closeButton from '../../img/close_24dp.svg'
 
 
-function ActionBar({ children, isNewUser, user }) {
+function ActionBar({ children, isNewContact, contact }) {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
 
-    
+
     return (
         <Wrapper>
-            <Nav>
+            {/* <Nav>
                 <Left>
                     <GoBackButton to='/' />
-                    <Title>{isNewUser ? ('New contact') : ('Edit contact')}</Title>
+                    <Title>{isNewContact ? ('New contact') : ('Edit contact')}</Title>
                 </Left>
-                                  
-                    {
-                        isNewUser ? (
+
+                {
+                    isNewContact ? (
+                        { children }
+                    ) : (
+                        <Right>
                             {children}
-                        ) : (
-                            <Right>
-                                {children}
-                                <OverflowMenuButton onClick={() => setIsMenuVisible(true)}/>
-                                <span style={{display: isMenuVisible ? 'block' : 'none'}}>
-                                    <OverflowMenu user={user} >
-                                        <Close onClick={() => setIsMenuVisible(false)} />    
-                                    </OverflowMenu>
-                                </span>
-                            </Right>
-                            
-                        )
-                    }                
-            </Nav>
+                            <OverflowMenuButton onClick={() => setIsMenuVisible(true)} />
+                            <span style={{ display: isMenuVisible ? 'block' : 'none' }}>
+                                <OverflowMenu contact={contact} >
+                                    <Close onClick={() => setIsMenuVisible(false)} />
+                                </OverflowMenu>
+                            </span>
+                        </Right>
+
+                    )
+                }
+            </Nav> */}
+
+
         </Wrapper>
     );
 }

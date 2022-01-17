@@ -2,30 +2,38 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useParams } from "react-router-dom";
 import { getChangeLog } from '../../../api-client/conection';
-import Loading from '../../Loading';
+import Spinner from '../../Spinner';
 import PopError from '../../PopError';
 import ChangeLogEntry from './ChangeLogEntry';
 
 
 function ChangeLog() {
-    const userId = useParams().userId;
+    const contactId = useParams().contactId;
     const [changeLog, setChangeLog] = useState(null);
     const [processing, setProcessing] = useState(true);
 
     useEffect(() => {
-        async function fetchUserList() {
+        async function fetchChangeLog() {
             setProcessing(true);
-            setChangeLog(await getChangeLog(userId));
+            setChangeLog(await getChangeLog(contactId));
             setProcessing(false);
         }
-        fetchUserList();
-    }, []);
+        fetchChangeLog();
+    }, [contactId]);
+
+    const dateFormat = (date) => {
+        const newDate = new Date(date);
+        return new Intl.DateTimeFormat('en-GB', { 
+            dateStyle: 'full', 
+            timeStyle: 'short' 
+        }).format(newDate);
+    }
     
     const generateChangeList = () => {
         let lastValue = changeLog[0].changedFields;
         const list = changeLog.map((change, i) => {
             const listItem = <ListItem key={change.id}>
-                <Date>{change.date}</Date>
+                <SmallTitle>{dateFormat(change.date)}</SmallTitle>
                 <ChangeLogEntry change={change} lastValue={lastValue} isFirst={i === 0} />
             </ListItem>;
             lastValue = { ...lastValue, ...change.changedFields };
@@ -44,14 +52,14 @@ function ChangeLog() {
                 generateChangeList()
                 : (
                     processing ? (
-                        <Loading />
+                        <Spinner />
                     ) : (
-                        <PopError errorMessage="Error obtaining the user change log" />
+                        <PopError errorMessage="Error obtaining the contact change log" />
                     )
                 )}
-            <Date>
+            <SmallTitle>
 
-            </Date>
+            </SmallTitle>
         </Wrapper>
     );
 }
@@ -65,7 +73,7 @@ const List = styled.ul``
 
 const ListItem = styled.li``
 
-const Date = styled.p`
+const SmallTitle = styled.p`
 
 `
 

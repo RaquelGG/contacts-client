@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 
-function OverflowMenu({children, user}) {
+function OverflowMenu({children, contact}) {
     
     return (
         <Wrapper>
             {children}
             <Option onClick={() => {}}>Remove contact</Option>
-            <StyledLink to={`/user/changelog/${user.id}`}>
+            <StyledLink to={`/contact/changelog/${contact.id}`}>
                 <Option>Open change log</Option>
             </StyledLink>
         </Wrapper>

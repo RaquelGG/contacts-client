@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components'
 
-function getInitials(user) {
-    return (user.name[0] + user.surname[0]).toUpperCase();
+function getInitials(contact) {
+    return (contact.name[0] + contact.surname[0]).toUpperCase();
 }
 
-function UserIcon({user}) {
+function ContactIcon({contact}) {
     return(
         <Wrapper>
             <Circle>
-                <Initials>{getInitials(user)}</Initials>
+                <Initials>{getInitials(contact)}</Initials>
             </Circle>
         </Wrapper>
     )
@@ -34,4 +34,4 @@ const Initials = styled.h2`
     font-weight: 400;
 `
 
-export default UserIcon;
+export default ContactIcon;

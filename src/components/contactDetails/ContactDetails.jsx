@@ -3,18 +3,18 @@ import styled from 'styled-components';
 import { useParams } from "react-router-dom";
 import { useInput } from './useInput'
 import ActionBar from './ActionBar'
-import { editUser, addUser } from '../../api-client/conection'
+import { editContact, addContact } from '../../api-client/conection'
 
 
-function UserDetails({ userList, isNewUser }) {
-    const user = userList[useParams().userId];
+function ContactDetails({ contacts, isNewContact }) {
+    const contact = contacts[useParams().contactId];
     const [emailError, setEmailError] = useState(false);
-    const { value: name, bind: bindName } = useInput(user.name);
-    const { value: surname, bind: bindSurname } = useInput(user.surname);
-    const { value: email, bind: bindEmail } = useInput(user.email);
-    const { value: tel, bind: bindtel } = useInput(user.tel);
+    const { value: name, bind: bindName } = useInput(contact.name);
+    const { value: surname, bind: bindSurname } = useInput(contact.surname);
+    const { value: email, bind: bindEmail } = useInput(contact.email);
+    const { value: tel, bind: bindtel } = useInput(contact.tel);
 
-    const saveUser = (event) => {
+    const saveContact = (event) => {
         event.preventDefault();
         if (!isValidEmail()) {
             setEmailError(true);
@@ -22,17 +22,17 @@ function UserDetails({ userList, isNewUser }) {
         }
         setEmailError(false);
         (async () => {
-            if (isNewUser) {
-                await addUser(name, surname, email, tel);
+            if (isNewContact) {
+                await addContact(name, surname, email, tel);
             } else {
-                await editUser(name, surname, email, tel);
+                await editContact(name, surname, email, tel);
             }
         })();
     }
 
     function isValidEmail() {
-        for (const u of userList) {
-            if (user.id === u.id) {
+        for (const u of contacts) {
+            if (contact.id === u.id) {
                 continue;
             }
             if (email === u.email) {
@@ -44,26 +44,26 @@ function UserDetails({ userList, isNewUser }) {
 
     return (
         <Wrapper>
-            <Form onSubmit={saveUser}>
-                <ActionBar isNewUser={isNewUser} user={user}>
+            <Form onSubmit={saveContact}>
+                <ActionBar isNewContact={isNewContact} contact={contact}>
                     <SaveButton type="submit" value="Save" />
                 </ActionBar>
                 <Label>
                     Name
                     <InputText type="text" {...bindName}
-                        placeholder={user.name}
+                        placeholder={contact.name}
                         required />
                 </Label>
                 <Label>
                     Surname
                     <InputText type="text" {...bindSurname}
-                        placeholder={user.surname}
+                        placeholder={contact.surname}
                         required />
                 </Label>
                 <Label>
                     E-Mail
                     <InputText type="email" {...bindEmail}
-                        placeholder={user.email}
+                        placeholder={contact.email}
                         required />
                     {
                         emailError ? (
@@ -77,8 +77,8 @@ function UserDetails({ userList, isNewUser }) {
                 <Label>
                     Phone Number (e.g.: +34 123 45 67 89)
                     <InputText type="tel" {...bindtel}
-                        placeholder={user.tel}
-                        pattern='[+][0-9]{2} [0-9]{3} [0-9]{2} [0-9]{2} [0-9]{2}'
+                        placeholder={contact.tel}
+                        pattern='^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.0-9]*$'
                         required />
                 </Label>
             </Form>
@@ -131,4 +131,4 @@ const SaveButton = styled.input`
     }
 `;
 
-export default UserDetails;
+export default ContactDetails;

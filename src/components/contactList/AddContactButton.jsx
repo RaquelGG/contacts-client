@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
-import addUserIcon from '../../img/person_add_alt_24dp.svg';
+import addContactIcon from '../../img/person_add_alt_24dp.svg';
 
-function AddUserButton() {
+function AddContactButton() {
     return (
         <Wrapper>
-            <Button to='user/new' />
+            <Button to='contact/new' />
         </Wrapper>
     );
 }
@@ -26,7 +26,7 @@ const Button = styled(Link)`
   height: 70px;
   background-color: #dae6ff;
   border-radius: 50%;
-  background-image: url(${addUserIcon});
+  background-image: url(${addContactIcon});
   background-repeat: no-repeat;
   background-position: center;
   background-size: 30px;
@@ -42,4 +42,4 @@ const Button = styled(Link)`
   }
 `
 
-export default AddUserButton;
+export default AddContactButton;

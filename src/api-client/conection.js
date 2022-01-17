@@ -1,45 +1,45 @@
 const URL = "http://127.0.0.1:3000"
 
-function prepareJson(user) {
+function prepareJson(contact) {
     return JSON.stringify({
-        name: user.name, 
-        surname: user.surname, 
-        email: user.email,
-        tel: user.tel
+        name: contact.name, 
+        surname: contact.surname, 
+        email: contact.email,
+        tel: contact.tel
     });
 }
 
-export async function getUsers() {
+export async function getContacts() {
     try {
         const response = await fetch(`${URL}/contacts`, {
             "method": 'GET'
         });
-        const users = await response.json();
-        return users;
+        const contacts = await response.json();
+        return contacts;
 
     } catch (err) {
-        console.error(`Error getting user list:`, err);
+        console.error(`Error getting contact list:`, err);
         return null;
     }
 }
 
-export async function editUser(user) {
+export async function editContact(contact) {
     try {
-        await fetch(`${URL}/contacts/${user.id}`, {
+        await fetch(`${URL}/contacts/${contact.id}`, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: prepareJson(user)
+            body: prepareJson(contact)
         });
     } catch (err) {
-        console.error(`Error editing user ${user.id}:`, err);
+        console.error(`Error editing contact ${contact.id}:`, err);
         return null;
     }
 }
 
-export async function addUser(user) {
+export async function addContact(contact) {
     try {
         await fetch(`${URL}/contacts`, {
             method: 'POST',
@@ -47,21 +47,21 @@ export async function addUser(user) {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: prepareJson(user)
+            body: prepareJson(contact)
         });
     } catch (err) {
-        console.error(`Error adding user ${user.email}:`, err);
+        console.error(`Error adding contact ${contact.email}:`, err);
         return null;
     }
 }
 
-export async function deleteUser(id) {
+export async function deleteContact(id) {
     try {
         await fetch(`${URL}/contacts/${id}`, {
             method: 'DELETE'
         });
     } catch (err) {
-        console.error(`Error deleting user ${id}:`, err);
+        console.error(`Error deleting contact ${id}:`, err);
         return null;
     }
 }
@@ -74,7 +74,7 @@ export async function getChangeLog(id) {
         const changeLog = await response.json();
         return changeLog;
     } catch (err) {
-        console.error(`Error getting change log from user ${id}:`, err);
+        console.error(`Error getting change log from contact ${id}:`, err);
         return null;
     }
 }
