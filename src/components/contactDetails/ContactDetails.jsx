@@ -6,7 +6,7 @@ import ActionBar from './ActionBar'
 import { editContact, addContact } from '../../api-client/conection'
 
 
-function ContactDetails({ contacts, isNewContact }) {
+function ContactDetails({ contacts, isNewContact, fetchContacts }) {
     const contact = contacts[useParams().contactId];
     const [emailError, setEmailError] = useState(false);
     const { value: name, bind: bindName } = useInput(contact.name);
@@ -23,10 +23,11 @@ function ContactDetails({ contacts, isNewContact }) {
         setEmailError(false);
         (async () => {
             if (isNewContact) {
-                await addContact(name, surname, email, tel);
+                await addContact(contact);
             } else {
-                await editContact(name, surname, email, tel);
+                await editContact(contact);
             }
+            fetchContacts();
         })();
     }
 

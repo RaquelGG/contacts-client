@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
 import PopError from '../PopError'
 import ContactIcon from './ContactIcon'
 import AddContactButton from './AddContactButton'
+import sadIcon from '../../img/sad.png'
+import AppBar from '../AppBar/AppBar'
 
 function ContactList({ contacts }) {
   return (
     <Wrapper>
+      <AppBar title="Contact list" canGoBack={false} />
       {contacts ? (
         <List>
           {Object.entries(contacts).map(([id, contact]) =>
@@ -22,7 +25,13 @@ function ContactList({ contacts }) {
           )}
         </List>
       ) : (
-          <PopError errorMessage="Failed to load" />
+        <>
+          
+          <VerticalAlignCenter>
+            <Img src={sadIcon} alt="Depression icons created by max.icons - Flaticon" longdesc="https://www.flaticon.com/free-icons/depression" />
+          </VerticalAlignCenter>
+          <PopError errorMessage="Failed to load. No response from the server" />
+        </>
       )}
       <AddContactButton />
     </Wrapper>
@@ -53,5 +62,20 @@ const Name = styled.h2`
   margin-left: 32px;
   font-weight: 400;
 `;
+
+const VerticalAlignCenter = styled.div`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
+const Img = styled.img`
+  margin: auto;
+  width: 200px;
+`
 
 export default ContactList;
