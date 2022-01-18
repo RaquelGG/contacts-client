@@ -5,7 +5,8 @@ import { getChangeLog } from '../../../api-client/api-client';
 import Spinner from '../../Spinner';
 import PopError from '../../PopError';
 import ChangeLogEntry from './ChangeLogEntry';
-
+import AppBar from '../../appBar/AppBar';
+import Wrapper from '../../Wrapper';
 
 function ChangeLog() {
     const contactId = useParams().contactId;
@@ -23,12 +24,12 @@ function ChangeLog() {
 
     const dateFormat = (date) => {
         const newDate = new Date(date);
-        return new Intl.DateTimeFormat('en-GB', { 
-            dateStyle: 'full', 
-            timeStyle: 'short' 
+        return new Intl.DateTimeFormat('en-GB', {
+            dateStyle: 'full',
+            timeStyle: 'short'
         }).format(newDate);
     }
-    
+
     const generateChangeList = () => {
         let lastValue = changeLog[0].changedFields;
         const list = changeLog.map((change, i) => {
@@ -42,42 +43,41 @@ function ChangeLog() {
         });
         list.reverse();
         return <List>
-            { list }
+            {list}
         </List>
     };
 
     return (
-        <Wrapper>
-            {changeLog ?
-                generateChangeList()
-                : (
-                    processing ? (
-                        <Spinner />
-                    ) : (
-                        <PopError errorMessage="Error obtaining the contact change log" />
-                    )
-                )}
-            <SmallTitle>
-
-            </SmallTitle>
-        </Wrapper>
+        <>
+            <AppBar goBack={`/contact/${contactId}`} title="Change log" />
+            <Wrapper>
+                {changeLog
+                    ? generateChangeList()
+                    : processing
+                        ? <Spinner />
+                        : <PopError errorMessage="Error obtaining the contact change log" />
+                }
+            </Wrapper>
+        </>
     );
 }
 
 /* STYLED COMPONENTS */
-const Wrapper = styled.ul`
+const List = styled.ul`
+    padding-inline-start: 0;    
+`;
 
-`
-
-const List = styled.ul``
-
-const ListItem = styled.li``
+const ListItem = styled.li`
+    list-style-type: none;
+    margin: 32px;
+`;
 
 const SmallTitle = styled.p`
-
-`
-
-
+    font-size: 1.1rem;
+    color: #6e6e6e;
+    font-weight: 400;
+    
+`;
 
 
 export default ChangeLog;
