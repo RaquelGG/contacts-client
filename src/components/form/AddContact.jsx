@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import AppBar from '../appBar/AppBar';
-import { addContact } from '../../api-client/api-client'
+import { addContact } from '../../api-client/api-client';
 import ContactForm, {useContactFormFields} from './ContactForm';
-import TextButton from '../TextButton'
+import TextButton from '../TextButton';
 
 function AddContact({contacts, fetchContacts}) {
     const [emailError, setEmailError] = useState(false);

@@ -15,52 +15,52 @@ export function useContactFormFields(contact) {
         binders: {
             bindName,            bindSurname, bindEmail, bindTel
         }
-    }
+    };
 }
 
 function ContactForm({ contact, binders, emailError, children }) {
     const {bindName, bindSurname, bindEmail, bindTel} = binders;
 
-return (
-    <>
-        {children}
-        <Wrapper>
-            <Form>
-                <Label>
+    return (
+        <>
+            {children}
+            <Wrapper>
+                <Form>
+                    <Label>
                     Name
-                    <InputText type="text" {...bindName}
-                        placeholder={contact?.name}
-                        required />
-                </Label>
-                <Label>
+                        <InputText type="text" {...bindName}
+                            placeholder={contact?.name}
+                            required />
+                    </Label>
+                    <Label>
                     Surname
-                    <InputText type="text" {...bindSurname}
-                        placeholder={contact?.surname}
-                        required />
-                </Label>
-                <Label>
+                        <InputText type="text" {...bindSurname}
+                            placeholder={contact?.surname}
+                            required />
+                    </Label>
+                    <Label>
                     E-Mail
-                    <InputText type="email" {...bindEmail}
-                        placeholder={contact?.email}
-                        required />
-                    {
-                        emailError ? (
-                            <ErrorMessage>The specified email is already in use</ErrorMessage>
-                        ) : null
-                    }
-                </Label>
-                <Label>
+                        <InputText type="email" {...bindEmail}
+                            placeholder={contact?.email}
+                            required />
+                        {
+                            emailError ? (
+                                <ErrorMessage>The specified email is already in use</ErrorMessage>
+                            ) : null
+                        }
+                    </Label>
+                    <Label>
                     Phone Number
-                    <InputText type="tel" {...bindTel}
-                        placeholder={contact?.tel}
-                        pattern='^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.0-9]*$'
-                        required />
-                </Label>
-            </Form>
-        </Wrapper>
+                        <InputText type="tel" {...bindTel}
+                            placeholder={contact?.tel}
+                            pattern='^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.0-9]*$'
+                            required />
+                    </Label>
+                </Form>
+            </Wrapper>
 
-    </>
-);
+        </>
+    );
 }
 
 /* STYLED COMPONENTS */

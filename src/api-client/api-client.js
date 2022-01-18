@@ -1,4 +1,4 @@
-const URL = "http://127.0.0.1:3000"
+const URL = 'http://127.0.0.1:3000';
 
 function prepareJson(contact) {
     return JSON.stringify({
@@ -12,13 +12,13 @@ function prepareJson(contact) {
 export async function getContacts() {
     try {
         const response = await fetch(`${URL}/contacts`, {
-            "method": 'GET'
+            'method': 'GET'
         });
         const contacts = await response.json();
         return contacts;
 
     } catch (err) {
-        console.error(`Error getting contact list:`, err);
+        console.error('Error getting contact list:', err);
         return null;
     }
 }
