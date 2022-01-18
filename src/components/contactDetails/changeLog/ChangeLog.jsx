@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useParams } from "react-router-dom";
-import { getChangeLog } from '../../../api-client/conection';
+import { getChangeLog } from '../../../api-client/api-client';
 import Spinner from '../../Spinner';
 import PopError from '../../PopError';
 import ChangeLogEntry from './ChangeLogEntry';

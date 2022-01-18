@@ -7,7 +7,7 @@ import {
 
 import ContactList from './components/contactList/ContactList';
 import ChangeLog from './components/contactDetails/changeLog/ChangeLog';
-import { getContacts } from './api-client/conection';
+import { getContacts } from './api-client/api-client';
 import Spinner from './components/Spinner';
 import EditContact from './components/EditContact';
 import AddContact from './components/AddContact';

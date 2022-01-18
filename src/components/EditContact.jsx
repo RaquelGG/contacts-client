@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import AppBar from './AppBar/AppBar';
-import { editContact } from '../api-client/conection'
+import { editContact } from '../api-client/api-client'
 import ContactForm from './ContactForm';
 import TextButton from './TextButton'
 import OverflowMenu from './AppBar/OverflowMenu';
