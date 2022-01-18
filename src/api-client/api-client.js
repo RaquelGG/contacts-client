@@ -25,7 +25,7 @@ export async function getContacts() {
 
 export async function editContact(contact) {
     try {
-        await fetch(`${URL}/contacts/${contact.id}`, {
+        const response = await fetch(`${URL}/contacts/${contact.id}`, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -33,6 +33,10 @@ export async function editContact(contact) {
             },
             body: prepareJson(contact)
         });
+        const jsonResponse = await response.json();
+        if (jsonResponse.status !== 'ok') {
+            throw jsonResponse.message;
+        }
     } catch (err) {
         console.error(`Error editing contact ${contact.id}:`, err);
         return null;
