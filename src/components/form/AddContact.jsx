@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import AppBar from './AppBar/AppBar';
-import { addContact } from '../api-client/api-client'
-import ContactForm from './ContactForm';
-import TextButton from './TextButton'
+import AppBar from '../appBar/AppBar';
+import { addContact } from '../../api-client/api-client'
+import ContactForm, {useContactFormFields} from './ContactForm';
+import TextButton from '../TextButton'
 
 function AddContact({contacts, fetchContacts}) {
     const [emailError, setEmailError] = useState(false);
     const navigate = useNavigate();
+    const {contact, binders} = useContactFormFields();
     function isInvalidEmail(email) {
         for (const u of Object.values(contacts)) {
             if (email === u.email) {
@@ -16,7 +17,7 @@ function AddContact({contacts, fetchContacts}) {
         }
         return false;
     }
-    async function onSubmit(contact) {
+    async function onSubmit() {
         if (isInvalidEmail(contact.email)) {
             setEmailError(true);
         } else {
@@ -26,9 +27,9 @@ function AddContact({contacts, fetchContacts}) {
         }
     }
     return (
-        <ContactForm onSubmit={onSubmit} emailError={emailError}>
-            <AppBar canGoBack>
-                <TextButton value="Save" />
+        <ContactForm emailError={emailError} binders={binders}>
+            <AppBar title="Create contact" goBack="/">
+                <TextButton value="Save" type="button" onClick={onSubmit} />
             </AppBar>
         </ContactForm>
     );

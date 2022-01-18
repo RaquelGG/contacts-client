@@ -1,4 +1,3 @@
-import { getByPlaceholderText } from "@testing-library/react";
 import { useState } from "react";
 
 /**

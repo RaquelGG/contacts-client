@@ -1,25 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useInput } from './contactDetails/useInput';
+import Wrapper from '../Wrapper';
+import { useInput } from './useInput';
 
-
-function ContactForm({ contact, onSubmit, emailError, children }) {
+export function useContactFormFields(contact) {
     const { value: name, bind: bindName } = useInput(contact?.name ?? '');
     const { value: surname, bind: bindSurname } = useInput(contact?.surname ?? '');
     const { value: email, bind: bindEmail } = useInput(contact?.email ?? '');
-    const { value: tel, bind: bindtel } = useInput(contact?.tel ?? '');
-
-    const saveContact = (event) => {
-        event.preventDefault();
-        onSubmit({
+    const { value: tel, bind: bindTel } = useInput(contact?.tel ?? '');
+    return {
+        contact: {
             name, surname, email, tel, id: contact?.id,
-        });
+        },
+        binders: {
+            bindName,            bindSurname, bindEmail, bindTel
+        }
     }
+}
 
-    return (
-        <>
-            <Form onSubmit={saveContact}>
-            {children}
+function ContactForm({ contact, binders, emailError, children }) {
+    const {bindName, bindSurname, bindEmail, bindTel} = binders;
+
+return (
+    <>
+        {children}
+        <Wrapper>
+            <Form>
                 <Label>
                     Name
                     <InputText type="text" {...bindName}
@@ -42,30 +48,31 @@ function ContactForm({ contact, onSubmit, emailError, children }) {
                             <ErrorMessage>The specified email is already in use</ErrorMessage>
                         ) : null
                     }
-
                 </Label>
                 <Label>
                     Phone Number
-                    <InputText type="tel" {...bindtel}
+                    <InputText type="tel" {...bindTel}
                         placeholder={contact?.tel}
                         pattern='^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.0-9]*$'
                         required />
                 </Label>
             </Form>
-        </>
-    );
+        </Wrapper>
+
+    </>
+);
 }
 
 /* STYLED COMPONENTS */
 const Form = styled.form`
     display: flex;
-    margin-top: 64px;
     flex-direction: column;
+    width: 100%;
 `;
 const Label = styled.label`
     display: flex;
     flex-direction: column;
-    margin: 16px 48px;
+    margin: 16px 0;
     font-size: 1.2em;
     color: #3567d3;
     font-weight: 500;
