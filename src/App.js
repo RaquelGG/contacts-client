@@ -9,8 +9,8 @@ import ContactList from './components/contactList/ContactList';
 import ChangeLog from './components/contactDetails/changeLog/ChangeLog';
 import { getContacts } from './api-client/api-client';
 import Spinner from './components/Spinner';
-import EditContact from './components/EditContact';
-import AddContact from './components/AddContact';
+import EditContact from './components/form/EditContact';
+import AddContact from './components/form/AddContact';
 
 
 function App() {
