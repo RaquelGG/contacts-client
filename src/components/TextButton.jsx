@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function TextButton({value}) {
-    return <Button type="submit" value={value} />
+function TextButton({value, type, ...attrs}) {
+    return <Button type={type} value={value} {...attrs} />
 }
 
 const Button = styled.input`
@@ -14,6 +14,7 @@ const Button = styled.input`
     padding: 0 20px;
     font-weight: 500;
     height: 35px;
+    //margin: 0 16px;
 
     &:hover {
         cursor: pointer;

@@ -1,26 +1,27 @@
 import React  from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 
-function IconButton({src, to}) {
-    return <Button to={to} />
+function IconButton({src, ...attrs}) {
+    return <Button image={src} type="button" {...attrs} />
 }
 
-const Button = styled(Link)`
-    background-image: url({src});
-    background-size: 25px;
+const Button = styled.button`
+    background-image: url(
+        ${({image}) => image}
+    );
+    background-size: 28px;
     background-repeat: no-repeat;
     background-color: inherit;
     background-position: center;
+    border: none;
     
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
 
     &:hover {
         cursor: pointer;
     }
 `;
-
 
 export default IconButton;
