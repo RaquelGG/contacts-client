@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useParams } from "react-router-dom";
-import { useInput } from './useInput'
+import { useInput } from '../form/useInput'
 import ActionBar from './ActionBar'
 import { editContact, addContact } from '../../api-client/api-client'
 
