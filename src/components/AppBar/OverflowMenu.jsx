@@ -21,9 +21,9 @@ function OverflowMenu({ contact, fetchContacts }) {
 
     const confirmationPopUp = (
         <CenterAligner onClick={() => {setRemoveVisible(false);}}>
-            <ConfirmationPopPup title={`Delete ${contact.email}`} description="The contact and all its changes will be deleted. Are you sure?" >
-                <PopUpButton type="button" value="Remove" onClick={() => {onDelete(contact);}} />
-                <PopUpButton type="button" value="Cancel" onClick={() => {setRemoveVisible(false);}}/>
+            <ConfirmationPopPup title={`Delete ${contact.email}`} description='The contact and all its changes will be deleted. Are you sure?' >
+                <PopUpButton type='button' value='Remove' onClick={() => {onDelete(contact);}} data-testid='removeButton'/>
+                <PopUpButton type='button' value='Cancel' onClick={() => {setRemoveVisible(false);}} data-testid='cancelButton' />
             </ConfirmationPopPup>
         </CenterAligner>
     );
