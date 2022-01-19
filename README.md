@@ -2,9 +2,10 @@
 
 I used [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Steps to run the app
 
-Use **`npm start`** to run the app in the development mode.\
+1. Run **`npm install`** in the project folder.
+1. Use **`npm start`** to run the app in the development mode.\
 Open [http://localhost:3001](http://localhost:3001) to view it in your browser.
 
 # Additional dependecies
