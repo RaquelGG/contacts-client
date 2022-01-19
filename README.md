@@ -15,7 +15,7 @@ Open [http://localhost:3001](http://localhost:3001) to view it in your browser.
 
 # Possible improvements
 
-- Use a library to improve accesibility.
+- Use a library to improve accessibility.
 - Use server error responses to provide client specific errors.
 - Disable request buttons while server is processing a previous the request.
 - Remove leading and trailing white spaces after 1-2s of the change in any input (this feature is already done on the server).
