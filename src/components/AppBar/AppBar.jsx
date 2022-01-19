@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import IconButton from './IconButton'
+import IconButton from '../common/IconButton';
 
 import arrowBackIcon from '../../img/arrow_back_24dp.svg';
 

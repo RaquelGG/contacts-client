@@ -2,16 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 function Loading() {
-    return(
-        <Wrapper>
-        
-            {/* TODO */}
-        </Wrapper>
-    )
+    return <Circle /> ;    
 }
 
 /* STYLED COMPONENTS */
-const Wrapper = styled.div`
+const Circle = styled.div`
     display: flex;
     width: 100%;
     height: 100%;
@@ -38,6 +33,6 @@ const Wrapper = styled.div`
             transform: rotate(360deg);
         }
     }
-`
+`;
 
 export default Loading;

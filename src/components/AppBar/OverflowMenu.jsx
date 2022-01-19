@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
-import IconButton from './IconButton';
+import IconButton from '../common/IconButton';
 import ConfirmationPopPup from '../common/ConfirmationPopPup';
 import TextButton from '../common/TextButton';
 import { deleteContact } from '../../api-client/api-client';

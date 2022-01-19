@@ -8,7 +8,7 @@ function ConfirmationPopPup({ children, title, description }) {
         <Bottom>
             {children}
         </Bottom>
-    </Box>
+    </Box>;
 }
 
 const Box = styled.div`

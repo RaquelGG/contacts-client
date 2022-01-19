@@ -1,23 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import addContactIcon from '../../img/person_add_alt_24dp.svg';
 
 function AddContactButton() {
-    return (
-        <Wrapper>
-            <Button to='contact/new' />
-        </Wrapper>
-    );
+    return <Button to='contact/new' />;
 }
 
 
 /* STYLED COMPONENTS */
-const Wrapper = styled.div`
-    
-`
-
 const Button = styled(Link)`
   position: absolute;
   right: 32px;
@@ -40,6 +32,6 @@ const Button = styled(Link)`
   &:hover {
     cursor: pointer;
   }
-`
+`;
 
 export default AddContactButton;

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 function TextButton({value, type, ...attrs}) {
-    return <Button type={type} value={value} {...attrs} />
+    return <Button type={type} value={value} {...attrs} />;
 }
 
 const Button = styled.input`
