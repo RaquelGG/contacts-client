@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 
 function IconButton({src, ...attrs}) {
-    return <Button image={src} type="button" {...attrs} />
+    return <Button image={src} type="button" {...attrs} />;
 }
 
 const Button = styled.button`
