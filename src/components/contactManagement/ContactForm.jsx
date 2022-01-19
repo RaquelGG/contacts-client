@@ -13,7 +13,7 @@ export function useContactFormFields(contact) {
             name, surname, email, tel, id: contact?.id,
         },
         binders: {
-            bindName,            bindSurname, bindEmail, bindTel
+            bindName, bindSurname, bindEmail, bindTel
         }
     };
 }
