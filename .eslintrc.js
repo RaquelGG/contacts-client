@@ -31,5 +31,13 @@ module.exports = {
             'always'
         ],
         'react/prop-types': 'off',
-    }
+    },
+    'overrides': [
+        {
+            'files': ['**/*.test.js'],
+            'env': {
+                'jest': true,
+            }
+        }
+    ],
 };
