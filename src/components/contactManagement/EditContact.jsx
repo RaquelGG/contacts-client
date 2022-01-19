@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from 'react-router-dom';
 import AppBar from '../appBar/AppBar';
-import { editContact } from '../../api-client/api-client'
+import { editContact } from '../../api-client/api-client';
 import ContactForm, {useContactFormFields} from './ContactForm';
-import TextButton from '../TextButton'
+import TextButton from '../common/TextButton';
 import OverflowMenu from '../appBar/OverflowMenu';
 
 function EditContact({ contacts, fetchContacts }) {
@@ -35,8 +35,8 @@ function EditContact({ contacts, fetchContacts }) {
     }
 
     return <ContactForm contact={oldContact} binders={binders} emailError={emailError}>
-        <AppBar title="Edit contact" goBack="/">
-            <TextButton value="Save" type="button" onClick={onSubmit} />
+        <AppBar title='Edit contact' goBack='/'>
+            <TextButton value='Save' type='button' onClick={onSubmit} />
             <OverflowMenu contact={oldContact} fetchContacts={fetchContacts} />
         </AppBar>
     </ContactForm>;

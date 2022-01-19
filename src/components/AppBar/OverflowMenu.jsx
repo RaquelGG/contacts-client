@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import IconButton from './IconButton';
-import ConfirmationPopPup from './ConfirmationPopPup';
-import TextButton from '../TextButton';
+import ConfirmationPopPup from '../common/ConfirmationPopPup';
+import TextButton from '../common/TextButton';
 import { deleteContact } from '../../api-client/api-client';
 
 import overFlowMenuIcon from '../../img/more_vert_24dp.svg';

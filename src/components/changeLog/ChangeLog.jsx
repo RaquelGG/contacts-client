@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useParams } from "react-router-dom";
-import { getChangeLog } from '../../../api-client/api-client';
-import Spinner from '../../Spinner';
-import PopError from '../../PopError';
+import { useParams } from 'react-router-dom';
+import { getChangeLog } from '../../api-client/api-client';
+import Spinner from '../common/Spinner';
+import PopError from '../common/PopError';
 import ChangeLogEntry from './ChangeLogEntry';
-import AppBar from '../../appBar/AppBar';
-import Wrapper from '../../Wrapper';
+import AppBar from '../appBar/AppBar';
+import Wrapper from '../common/Wrapper';
 
 function ChangeLog() {
     const contactId = useParams().contactId;
@@ -28,7 +28,7 @@ function ChangeLog() {
             dateStyle: 'full',
             timeStyle: 'short'
         }).format(newDate);
-    }
+    };
 
     const generateChangeList = () => {
         let lastValue = changeLog[0].changedFields;
@@ -44,7 +44,7 @@ function ChangeLog() {
         list.reverse();
         return <List>
             {list}
-        </List>
+        </List>;
     };
 
     return (

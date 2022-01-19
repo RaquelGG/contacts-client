@@ -5,13 +5,12 @@ import {
     Route
 } from 'react-router-dom';
 
-import ContactList from './components/contactList/ContactList';
-import ChangeLog from './components/contactDetails/changeLog/ChangeLog';
-import { getContacts } from './api-client/api-client';
-import Spinner from './components/Spinner';
-import EditContact from './components/form/EditContact';
-import AddContact from './components/form/AddContact';
-
+import ContactList from './contactList/ContactList';
+import ChangeLog from './changeLog/ChangeLog';
+import { getContacts } from '../api-client/api-client';
+import Spinner from './common/Spinner';
+import EditContact from './contactManagement/EditContact';
+import AddContact from './contactManagement/AddContact';
 
 function App() {
     const [contacts, setContacts] = useState(null);

@@ -1,46 +1,46 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import Wrapper from '../Wrapper'
-import PopError from '../PopError'
-import ContactIcon from './ContactIcon'
-import AddContactButton from './AddContactButton'
-import sadIcon from '../../img/sad.png'
-import AppBar from '../appBar/AppBar'
+import Wrapper from '../common/Wrapper';
+import PopError from '../common/PopError';
+import ContactIcon from './ContactIcon';
+import AddContactButton from './AddContactButton';
+import sadIcon from '../../img/sad.png';
+import AppBar from '../appBar/AppBar';
 
 function ContactList({ contacts }) {
 
-  const emptyContacts = (
-    <VerticalAlignCenter>
-      <Img src={sadIcon} alt="Depression icons created by max.icons - Flaticon" longdesc="https://www.flaticon.com/free-icons/depression" />
-    </VerticalAlignCenter>);
+    const emptyContacts = (
+        <VerticalAlignCenter>
+            <Img src={sadIcon} alt='Depression icons created by max.icons - Flaticon' longdesc='https://www.flaticon.com/free-icons/depression' />
+        </VerticalAlignCenter>);
 
-  const generateContactList = (
-    <List>
-      {Object.entries(contacts).map(([id, contact]) =>
-        <ListItem
-          key={id}
-          to={`/contact/${id}`}
-        >
-          <ContactIcon contact={contact} />
-          <Name>{contact.name} {contact.surname}</Name>
-        </ListItem>
-      )}
-    </List>
-  );
+    const generateContactList = (
+        <List>
+            {Object.entries(contacts).map(([id, contact]) =>
+                <ListItem
+                    key={id}
+                    to={`/contact/${id}`}
+                >
+                    <ContactIcon contact={contact} />
+                    <Name>{contact.name} {contact.surname}</Name>
+                </ListItem>
+            )}
+        </List>
+    );
 
-  return <>
-      <AppBar title="Contact list" />
-      <Wrapper>
-        {Object.keys(contacts).length === 0
-          ? emptyContacts
-          : contacts
-            ? generateContactList
-            : <PopError errorMessage="Failed to load. No response from the server" />
-        }
-        <AddContactButton />
-      </Wrapper>
+    return <>
+        <AppBar title="Contact list" />
+        <Wrapper>
+            {Object.keys(contacts).length === 0
+                ? emptyContacts
+                : contacts
+                    ? generateContactList
+                    : <PopError errorMessage="Failed to load. No response from the server" />
+            }
+            <AddContactButton />
+        </Wrapper>
     </>;
 }
 

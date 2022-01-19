@@ -1,15 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import arrowIcon from '../../../img/arrow_forward_24dp.svg'
+import arrowIcon from '../../img/arrow_forward_24dp.svg';
 
 
 function ChangeLogEntry({ change, lastValue, isFirst }) {
     if (isFirst) {
         // TODO: show all contact details on creation
-        return <ChangeTitle>Contact creation</ChangeTitle>
+        return <ChangeTitle>Contact creation</ChangeTitle>;
     }
-    return (
-        Object.entries(change.changedFields).map(([field, val]) =>
+    return Object.entries(change.changedFields).map(([field, val]) =>
         (
             <ChangedField key={field}>
                 <ChangeTitle>{field} has been changed</ChangeTitle>
@@ -19,8 +18,7 @@ function ChangeLogEntry({ change, lastValue, isFirst }) {
                     {val}
                 </ChangeComparison>
             </ChangedField>
-        ))
-    );
+        ));
 }
 
 const ChangedField = styled.div`
