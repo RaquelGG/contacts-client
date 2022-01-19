@@ -8,7 +8,7 @@ I used [Create React App](https://github.com/facebook/create-react-app).
 1. Use **`npm start`** to run the app in the development mode.\
 Open [http://localhost:3001](http://localhost:3001) to view it in your browser.
 
-# Additional dependecies
+# Additional dependencies
 - react user dom
 - styled components
 - eslint
