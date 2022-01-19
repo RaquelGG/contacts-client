@@ -13,7 +13,9 @@ function ContactList({ contacts }) {
 
     const emptyContacts = (
         <VerticalAlignCenter>
-            <Img src={sadIcon} alt='Depression icons created by max.icons - Flaticon' longdesc='https://www.flaticon.com/free-icons/depression' />
+            <Img src={sadIcon}
+                alt='The girl is sad because the list is empty'
+            />
         </VerticalAlignCenter>);
 
     const generateContactList = (
@@ -31,13 +33,13 @@ function ContactList({ contacts }) {
     );
 
     return <>
-        <AppBar title="Contact list" />
+        <AppBar title='Contact list' />
         <Wrapper>
             {Object.keys(contacts).length === 0
                 ? emptyContacts
                 : contacts
                     ? generateContactList
-                    : <PopError errorMessage="Failed to load. No response from the server" />
+                    : <PopError errorMessage='Failed to load. No response from the server' />
             }
             <AddContactButton />
         </Wrapper>
