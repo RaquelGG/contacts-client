@@ -15,35 +15,33 @@ function OverflowMenu({ contact, fetchContacts }) {
 
     async function onDelete(contact) {
         await deleteContact(contact.id);
-        await fetchContacts();
         navigate('/');
+        await fetchContacts();
     }
 
     const confirmationPopUp = (
-        <CenterAligner onClick={() => {setRemoveVisible(false);}}>
+        <CenterAligner onClick={() => { setRemoveVisible(false); }}>
             <ConfirmationPopPup title={`Delete ${contact.email}`} description='The contact and all its changes will be deleted. Are you sure?' >
-                <PopUpButton type='button' value='Remove' onClick={() => {onDelete(contact);}} data-testid='removeButton'/>
-                <PopUpButton type='button' value='Cancel' onClick={() => {setRemoveVisible(false);}} data-testid='cancelButton' />
+                <PopUpButton type='button' value='Remove' onClick={() => { onDelete(contact); }} data-testid='removeButton' />
+                <PopUpButton type='button' value='Cancel' onClick={() => { setRemoveVisible(false); }} data-testid='cancelButton' />
             </ConfirmationPopPup>
         </CenterAligner>
     );
 
-    return (
-        <>
-            {isConfirmationVisible
-                ? confirmationPopUp
-                : null
-            }
-            <IconButton src={overFlowMenuIcon} onClick={() => { setIsMenuVisible(true); }} />
-            <Background isMenuVisible={isMenuVisible} onClick={() => setIsMenuVisible(false)} />
-            <List isMenuVisible={isMenuVisible}>
-                <Option onClick={() => {setRemoveVisible(true);}}>Remove contact</Option>
-                <StyledLink to={`/contact/changelog/${contact.id}`}>
-                    <Option>Open change log</Option>
-                </StyledLink>
-            </List>
-        </>
-    );
+    return <>
+        {isConfirmationVisible
+            ? confirmationPopUp
+            : null
+        }
+        <IconButton src={overFlowMenuIcon} onClick={() => { setIsMenuVisible(true); }} />
+        <Background isMenuVisible={isMenuVisible} onClick={() => setIsMenuVisible(false)} />
+        <List isMenuVisible={isMenuVisible}>
+            <Option onClick={() => { setRemoveVisible(true); setIsMenuVisible(false); }}>Remove contact</Option>
+            <StyledLink to={`/contact/changelog/${contact.id}`}>
+                <Option>Open change log</Option>
+            </StyledLink>
+        </List>
+    </>;
 }
 
 /* STYLED COMPONENTS */
@@ -53,8 +51,7 @@ const Background = styled.div`
     height: 100vh;
     background: hsla(0, 0, 0, 0);
     display: ${({ isMenuVisible }) =>
-        isMenuVisible ? 'block' : 'none'
-};
+        isMenuVisible ? 'block' : 'none'};
     left: 0;
     top: 0;
 `;
@@ -65,12 +62,12 @@ const List = styled.ul`
     height: fit-content;
     position: fixed;
     top: 8px;
+    //right: 8px;
     list-style-type: none;
     border-radius: 10px;
     padding-inline-start: 0;
     display: ${({ isMenuVisible }) =>
-        isMenuVisible ? 'block' : 'none'
-};
+        isMenuVisible ? 'block' : 'none'};
 `;
 
 const StyledLink = styled(Link)`
