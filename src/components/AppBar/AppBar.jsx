@@ -42,7 +42,7 @@ const Wrapper = styled.div`
 const Nav = styled.nav`
     display: flex;
     width: 100%;
-    padding: 0;
+    padding: 0 16px;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
