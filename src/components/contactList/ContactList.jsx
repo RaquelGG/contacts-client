@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import Wrapper from '../common/Wrapper';
-import PopError from '../common/PopError';
 import ContactIcon from './ContactIcon';
 import AddContactButton from './AddContactButton';
 import sadIcon from '../../img/sad.png';
@@ -11,12 +10,15 @@ import AppBar from '../appBar/AppBar';
 
 function ContactList({ contacts }) {
 
-    const emptyContacts = (
+    const emptyContacts = <>
+        <Name>The list is empty</Name>
         <VerticalAlignCenter>
             <Img src={sadIcon}
                 alt='The girl is sad because the list is empty'
             />
-        </VerticalAlignCenter>);
+        </VerticalAlignCenter>
+    </>;
+
 
     const generateContactList = (
         <List>
@@ -37,9 +39,7 @@ function ContactList({ contacts }) {
         <Wrapper>
             {Object.keys(contacts).length === 0
                 ? emptyContacts
-                : contacts
-                    ? generateContactList
-                    : <PopError errorMessage='Failed to load. No response from the server' />
+                : generateContactList
             }
             <AddContactButton />
         </Wrapper>
@@ -80,7 +80,7 @@ const VerticalAlignCenter = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: -92px;
+  margin-top: -100px;
 `;
 
 const Img = styled.img`
