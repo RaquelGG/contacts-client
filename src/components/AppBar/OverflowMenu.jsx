@@ -60,9 +60,9 @@ const List = styled.ul`
     background-color: #424242;
     width: fit-content;
     height: fit-content;
-    position: fixed;
-    top: 8px;
-    //right: 8px;
+    position: absolute;
+    margin-top: 100px;
+    margin-left: -36px;
     list-style-type: none;
     border-radius: 10px;
     padding-inline-start: 0;
@@ -77,7 +77,6 @@ const StyledLink = styled(Link)`
 const Option = styled.li`
     color: white;
     margin: 32px;
-    width: 100%;
 
     &:hover {
         cursor: pointer;
